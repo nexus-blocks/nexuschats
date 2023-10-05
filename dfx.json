@@ -1,0 +1,45 @@
+{
+  "canisters": {
+    "management": {
+      "main": "src/nexuschats_backend/management/main.mo",
+      "type": "motoko"
+    },
+    "chat": {
+      "main": "src/nexuschats_backend/chat/main.mo",
+      "type": "motoko"
+    },
+    "chat_manager": {
+      "main": "src/nexuschats_backend/chat_manager/main.mo",
+      "type": "motoko"
+    },
+    "storage": {
+      "main": "src/nexuschats_backend/storage/main.mo",
+      "type": "motoko"
+    },
+    "storage_manager": {
+      "main": "src/nexuschats_backend/storage_manager/main.mo",
+      "type": "motoko"
+    },
+    "nexuschats_frontend": {
+      "dependencies": [
+        "management"
+      ],
+      "frontend": {
+        "entrypoint": "src/nexuschats_frontend/src/index.html"
+      },
+      "source": [
+        "src/nexuschats_frontend/assets",
+        "dist/nexuschats_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": "mops sources"
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
