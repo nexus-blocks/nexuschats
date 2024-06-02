@@ -1,43 +1,42 @@
 {
   "canisters": {
-    "management": {
-      "main": "src/nexuschats_backend/management/main.mo",
-      "type": "motoko"
-    },
     "chat": {
-      "main": "src/nexuschats_backend/chat/main.mo",
-      "type": "motoko"
+      "candid": "backend/chat/chat.did",
+      "package": "chat",
+      "type": "rust"
+    },
+    "management": {
+      "candid": "backend/management/management.did",
+      "package": "management",
+      "type": "rust"
+    },
+    "user": {
+      "candid": "backend/user/user.did",
+      "package": "user",
+      "type": "rust"
     },
     "chat_manager": {
-      "main": "src/nexuschats_backend/chat_manager/main.mo",
-      "type": "motoko"
+      "candid": "backend/chat_manager/chat_manager.did",
+      "package": "chat_manager",
+      "type": "rust"
     },
-    "storage": {
-      "main": "src/nexuschats_backend/storage/main.mo",
-      "type": "motoko"
-    },
-    "storage_manager": {
-      "main": "src/nexuschats_backend/storage_manager/main.mo",
-      "type": "motoko"
+    "user_manager": {
+      "candid": "backend/user_manager/user_manager.did",
+      "package": "user_manager",
+      "type": "rust"
     },
     "nexuschats_frontend": {
-      "dependencies": [
-        "management"
-      ],
-      "frontend": {
-        "entrypoint": "src/nexuschats_frontend/src/index.html"
-      },
       "source": [
-        "src/nexuschats_frontend/assets",
-        "dist/nexuschats_frontend/"
+        "src/nexuschats_frontend/dist"
       ],
-      "type": "assets"
+      "type": "assets",
+      "workspace": "nexuschats_frontend"
     }
   },
   "defaults": {
     "build": {
       "args": "",
-      "packtool": "mops sources"
+      "packtool": ""
     }
   },
   "output_env_file": ".env",
