@@ -1,15 +1,16 @@
 [workspace]
 members = [
-    "backend/chat",
-    "backend/management",
-    "backend/chat_manager",
-    "backend/user",
-    "backend/user_manager",
+    "backend/canisters/chat",
+    "backend/canisters/group",
+    "backend/canisters/project",
+    "backend/canisters/users",
+    "backend/canisters/projects_manager",
+    "backend/canisters/storage",
 ]
 resolver = "2"
 [workspace.dependencies]
 candid = "0.10"
-ic-cdk = "0.12"
+ic-cdk = "0.14.0"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1.0"
 ic-stable-structures = "0.6.4"

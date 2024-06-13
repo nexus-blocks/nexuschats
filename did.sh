@@ -3,7 +3,7 @@
 
 function generate_did() {
   local canister=$1
-  canister_root="backend/$canister"
+  canister_root="backend/canisters/$canister"
 
   cargo build --manifest-path="$canister_root/Cargo.toml" \
       --target wasm32-unknown-unknown \
@@ -12,7 +12,7 @@ function generate_did() {
   candid-extractor "target/wasm32-unknown-unknown/release/$canister.wasm" > "$canister_root/$canister.did"
 }
 
-CANISTERS=main,platform,platform_manager,user,user_manager
+CANISTERS=chat,projects_manager,group,users,storage,project
 
 for canister in $(echo $CANISTERS | sed "s/,/ /g")
 do

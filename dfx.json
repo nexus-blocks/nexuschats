@@ -1,28 +1,33 @@
 {
   "canisters": {
     "chat": {
-      "candid": "backend/chat/chat.did",
+      "candid": "backend/canisters/chat/chat.did",
       "package": "chat",
       "type": "rust"
     },
-    "management": {
-      "candid": "backend/management/management.did",
-      "package": "management",
+    "project": {
+      "candid": "backend/canisters/project/project.did",
+      "package": "project",
       "type": "rust"
     },
-    "user": {
-      "candid": "backend/user/user.did",
-      "package": "user",
+    "users": {
+      "candid": "backend/canisters/users/users.did",
+      "package": "users",
       "type": "rust"
     },
-    "chat_manager": {
-      "candid": "backend/chat_manager/chat_manager.did",
-      "package": "chat_manager",
+    "projects_manager": {
+      "candid": "backend/canisters/projects_manager/projects_manager.did",
+      "package": "projects_manager",
       "type": "rust"
     },
-    "user_manager": {
-      "candid": "backend/user_manager/user_manager.did",
-      "package": "user_manager",
+    "group": {
+      "candid": "backend/canisters/group/group.did",
+      "package": "group",
+      "type": "rust"
+    },
+    "storage": {
+      "candid": "backend/canisters/storage/storage.did",
+      "package": "storage",
       "type": "rust"
     },
     "nexuschats_frontend": {

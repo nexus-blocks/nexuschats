@@ -7,73 +7,14 @@ use ic_stable_structures::memory_manager::{MemoryId, MemoryManager, VirtualMemor
 use ic_stable_structures::storable::Bound;
 use ic_stable_structures::{ DefaultMemoryImpl, StableBTreeMap, Storable};
 use std::{borrow::Cow, cell::RefCell};
+pub mod types;
+
+use crate::types::platform::*;
+use crate::types::user::*;
 
 type Memory = VirtualMemory<DefaultMemoryImpl>;
 
-#[derive(candid::CandidType, Deserialize, Serialize)]
-enum Error {
-    NotFound { msg: String },
-}
 
-#[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
-struct Platform {
-    id: String,
-    name: String,
-    cover_image: String,
-    canister_id: String,
-    created_at: String,
-}
-
-#[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
-struct PlatformPayload {
-    id: String,
-    name: String,
-    cover_image: String,
-}
-
-#[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
-struct UserProfile {
-    id: String,
-    principal_id: String,
-    profile_body: Option<ProfileBody>,
-    created_at: String,
-    updated_at: Option<String>,
-}
-
-#[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
-struct UserProfilePayload {
-    id: String,
-    principal_id: String,
-    profile_body: Option<ProfileBody>,
-}
-
-#[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
-struct ProfileBody {
-    username: String,
-    first_name: String,
-    last_name: String,
-    email: String,
-    canister_id: Option<String>,
-    topics: Vec<Topic>,
-    platforms_following: Vec<String>,
-}
-
-#[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
-struct Topic {
-    id: String,
-    name: String,
-    description: String,
-    cover_image: String,
-    created_at: String,
-}
-
-#[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
-struct TopicPayload {
-    id: String,
-    name: String,
-    description: String,
-    cover_image: String,
-}
 
 impl Storable for Platform {
     fn to_bytes(&self) -> std::borrow::Cow<[u8]> {
@@ -212,7 +153,7 @@ fn add_platform(platform: PlatformPayload) -> Platform {
 }
 
 #[ic_cdk::update]
-fn add_topic(topic: TopicPayload) -> Topic {
+pub fn add_topic(topic: TopicPayload) -> Topic {
     let topic = Topic {
         id: topic.id,
         name: topic.name,
