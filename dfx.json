@@ -1,32 +1,32 @@
 {
   "canisters": {
     "chat": {
-      "candid": "backend/canisters/chat/chat.did",
+      "candid": "src/nexuschats_backend/canisters/chat/chat.did",
       "package": "chat",
       "type": "rust"
     },
     "project": {
-      "candid": "backend/canisters/project/project.did",
+      "candid": "src/nexuschats_backend/canisters/project/project.did",
       "package": "project",
       "type": "rust"
     },
     "users": {
-      "candid": "backend/canisters/users/users.did",
+      "candid": "src/nexuschats_backend/canisters/users/users.did",
       "package": "users",
       "type": "rust"
     },
     "projects_manager": {
-      "candid": "backend/canisters/projects_manager/projects_manager.did",
+      "candid": "src/nexuschats_backend/canisters/projects_manager/projects_manager.did",
       "package": "projects_manager",
       "type": "rust"
     },
     "group": {
-      "candid": "backend/canisters/group/group.did",
+      "candid": "src/nexuschats_backend/canisters/group/group.did",
       "package": "group",
       "type": "rust"
     },
     "storage": {
-      "candid": "backend/canisters/storage/storage.did",
+      "candid": "src/nexuschats_backend/canisters/storage/storage.did",
       "package": "storage",
       "type": "rust"
     },

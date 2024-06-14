@@ -114,6 +114,7 @@ dependencies = [
  "ic-stable-structures",
  "serde",
  "serde_json",
+ "types",
 ]
 
 [[package]]
@@ -185,6 +186,7 @@ dependencies = [
  "ic-stable-structures",
  "serde",
  "serde_json",
+ "types",
 ]
 
 [[package]]
@@ -336,6 +338,7 @@ dependencies = [
  "ic-stable-structures",
  "serde",
  "serde_json",
+ "types",
 ]
 
 [[package]]
@@ -347,6 +350,7 @@ dependencies = [
  "ic-stable-structures",
  "serde",
  "serde_json",
+ "types",
 ]
 
 [[package]]
@@ -464,6 +468,7 @@ dependencies = [
  "ic-stable-structures",
  "serde",
  "serde_json",
+ "types",
 ]
 
 [[package]]
@@ -521,6 +526,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "42ff0bf0c66b8238c6f3b578df37d0b7848e55df8577b3f74f92a69acceeb825"
 
 [[package]]
+name = "types"
+version = "0.1.0"
+dependencies = [
+ "candid",
+ "ic-cdk",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "unicode-ident"
 version = "1.0.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -541,6 +556,7 @@ dependencies = [
  "ic-stable-structures",
  "serde",
  "serde_json",
+ "types",
 ]
 
 [[package]]
