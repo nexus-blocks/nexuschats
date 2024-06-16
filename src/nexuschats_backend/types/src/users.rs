@@ -1,5 +1,10 @@
 use serde::{Deserialize, Serialize};
 
+#[derive(candid::CandidType, Deserialize, Serialize)]
+pub enum Error {
+    NotFound { msg: String },
+}
+
 #[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
 pub struct UserProfile {
     pub principal_id: String,

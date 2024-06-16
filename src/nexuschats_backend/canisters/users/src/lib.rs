@@ -1,5 +1,6 @@
 #[macro_use]
 extern crate serde;
+use candid::{Decode, Encode};
 use ic_cdk::api::time;
 use ic_stable_structures::memory_manager::{MemoryId, MemoryManager, VirtualMemory};
 use ic_stable_structures::storable::Bound;
@@ -7,10 +8,12 @@ use ic_stable_structures::{DefaultMemoryImpl, StableBTreeMap, Storable};
 use std::{borrow::Cow, cell::RefCell};
 
 use types::*;
+#[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
+pub struct MyUserProfile(UserProfile);
 
 type Memory = VirtualMemory<DefaultMemoryImpl>;
 
-impl Storable for UserProfile {
+impl Storable for MyUserProfile {
     fn to_bytes(&self) -> std::borrow::Cow<[u8]> {
         Cow::Owned(Encode!(self).unwrap())
     }
@@ -28,25 +31,21 @@ thread_local! {
         MemoryManager::init(DefaultMemoryImpl::default())
     );
 
-    static USERS: RefCell<StableBTreeMap<String, UserProfile, Memory>> =
+    static USERS: RefCell<StableBTreeMap<String, MyUserProfile, Memory>> =
         RefCell::new(StableBTreeMap::init(
             MEMORY_MANAGER.with(|m| m.borrow().get(MemoryId::new(1)))
     ));
 
 }
 
-fn _get_user_profile(id: &String) -> Option<UserProfile> {
+fn _get_user_profile(id: &String) -> Option<MyUserProfile> {
     USERS.with(|s| s.borrow().get(id))
-}
-
-fn _get_topic(id: &String) -> Option<Topic> {
-    TOPICS.with(|s| s.borrow().get(id))
 }
 
 // GET VALUE BY ID FUNCTIONS
 
 #[ic_cdk::query]
-fn get_user_profile(id: String) -> Result<UserProfile, Error> {
+fn get_user_profile(id: String) -> Result<MyUserProfile, Error> {
     match _get_user_profile(&id) {
         Some(message) => Ok(message),
         None => Err(Error::NotFound {
@@ -56,13 +55,13 @@ fn get_user_profile(id: String) -> Result<UserProfile, Error> {
 }
 
 #[ic_cdk::query]
-fn get_all_users() -> Vec<UserProfile> {
+fn get_all_users() -> Vec<MyUserProfile> {
     USERS.with(|s| s.borrow().iter().map(|(_, v)| v.clone()).collect())
 }
 
 #[ic_cdk::update]
-fn add_user_profile(_user_profile: UserProfilePayload) -> UserProfile {
-    let user_profile = UserProfile {
+fn add_user_profile(_user_profile: UserProfilePayload) -> MyUserProfile {
+    let user_profile = MyUserProfile {
         id: _user_profile.id,
         principal_id: _user_profile.principal_id,
         profile_body: _user_profile.profile_body,
@@ -79,7 +78,7 @@ fn add_user_profile(_user_profile: UserProfilePayload) -> UserProfile {
 // UPDATE VALUE IN STATE FUNCTIONS
 
 #[ic_cdk::update]
-fn update_user_profile(user_profile: UserProfile) -> UserProfile {
+fn update_user_profile(user_profile: MyUserProfile) -> MyUserProfile {
     USERS.with(|s| {
         s.borrow_mut()
             .insert(user_profile.id.clone(), user_profile.clone())

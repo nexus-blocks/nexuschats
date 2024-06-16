@@ -95,9 +95,9 @@ dependencies = [
 
 [[package]]
 name = "cc"
-version = "1.0.98"
+version = "1.0.99"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "41c270e7540d725e65ac7f1b212ac8ce349719624d7bcff99f8e2e488e8cf03f"
+checksum = "96c51067fd44124faa7f870b4b1c969379ad32b2ba805aa959430ceaa384f695"
 
 [[package]]
 name = "cfg-if"
@@ -224,9 +224,9 @@ dependencies = [
 
 [[package]]
 name = "ic-stable-structures"
-version = "0.6.4"
+version = "0.6.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "07e2282054c8ddf0cb2a7abf5c174c373917b4345c9a096ae4aa7f7185cdcdc7"
+checksum = "03f3044466a69802de74e710dc0300b706a05696a0531c942ca856751a13b0db"
 dependencies = [
  "ic_principal",
 ]
@@ -543,14 +543,15 @@ checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 
 [[package]]
 name = "unicode-width"
-version = "0.1.12"
+version = "0.1.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "68f5e5f3158ecfd4b8ff6fe086db7c8467a2dfdac97fe420f2b7c4aa97af66d6"
+checksum = "0336d538f7abc86d282a4189614dfaa90810dfc2c6f6427eaf88e16311dd225d"
 
 [[package]]
 name = "users"
 version = "0.1.0"
 dependencies = [
+ "candid",
  "ic-cdk",
  "ic-stable-structures",
  "serde",
