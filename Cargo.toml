@@ -8,7 +8,9 @@ members = [
     "src/nexuschats_backend/canisters/storage",
     "src/nexuschats_backend/types",
 ]
+
 resolver = "2"
+
 [workspace.dependencies]
 candid = "0.10"
 ic-cdk = "0.14.0"
