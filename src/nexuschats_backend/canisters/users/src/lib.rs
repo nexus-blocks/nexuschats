@@ -9,11 +9,11 @@ use std::{borrow::Cow, cell::RefCell};
 
 use types::*;
 #[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
-pub struct MyUserProfile(UserProfile);
+pub struct UserProfile(Profile);
 
 type Memory = VirtualMemory<DefaultMemoryImpl>;
 
-impl Storable for MyUserProfile {
+impl Storable for UserProfile {
     fn to_bytes(&self) -> std::borrow::Cow<[u8]> {
         Cow::Owned(Encode!(self).unwrap())
     }
@@ -31,21 +31,21 @@ thread_local! {
         MemoryManager::init(DefaultMemoryImpl::default())
     );
 
-    static USERS: RefCell<StableBTreeMap<String, MyUserProfile, Memory>> =
+    static USERS: RefCell<StableBTreeMap<String, UserProfile, Memory>> =
         RefCell::new(StableBTreeMap::init(
             MEMORY_MANAGER.with(|m| m.borrow().get(MemoryId::new(1)))
     ));
 
 }
 
-fn _get_user_profile(id: &String) -> Option<MyUserProfile> {
+fn _get_user_profile(id: &String) -> Option<UserProfile> {
     USERS.with(|s| s.borrow().get(id))
 }
 
 // GET VALUE BY ID FUNCTIONS
 
 #[ic_cdk::query]
-fn get_user_profile(id: String) -> Result<MyUserProfile, Error> {
+fn get_user_profile(id: String) -> Result<UserProfile, Error> {
     match _get_user_profile(&id) {
         Some(message) => Ok(message),
         None => Err(Error::NotFound {
@@ -55,13 +55,13 @@ fn get_user_profile(id: String) -> Result<MyUserProfile, Error> {
 }
 
 #[ic_cdk::query]
-fn get_all_users() -> Vec<MyUserProfile> {
+fn get_all_users() -> Vec<UserProfile> {
     USERS.with(|s| s.borrow().iter().map(|(_, v)| v.clone()).collect())
 }
 
 #[ic_cdk::update]
-fn add_user_profile(_user_profile: UserProfilePayload) -> MyUserProfile {
-    let user_profile = MyUserProfile {
+fn add_user_profile(_user_profile: UserProfilePayload) -> UserProfile {
+    let user_profile = UserProfile {
         id: _user_profile.id,
         principal_id: _user_profile.principal_id,
         profile_body: _user_profile.profile_body,
@@ -78,7 +78,7 @@ fn add_user_profile(_user_profile: UserProfilePayload) -> MyUserProfile {
 // UPDATE VALUE IN STATE FUNCTIONS
 
 #[ic_cdk::update]
-fn update_user_profile(user_profile: MyUserProfile) -> MyUserProfile {
+fn update_user_profile(user_profile: UserProfile) -> UserProfile {
     USERS.with(|s| {
         s.borrow_mut()
             .insert(user_profile.id.clone(), user_profile.clone())
