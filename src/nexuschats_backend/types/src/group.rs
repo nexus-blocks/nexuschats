@@ -1,3 +1,7 @@
+use serde::{Deserialize, Serialize};
+
+use crate::chat::MessageBody;
+
 #[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
 pub struct Group {
     pub id: String,

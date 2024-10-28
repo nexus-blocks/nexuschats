@@ -11,10 +11,6 @@
     "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\""
   },
   "dependencies": {
-    "@dfinity/agent": "^1.0.1",
-    "@dfinity/candid": "^1.0.1",
-    "@dfinity/principal": "^1.0.1",
-    "@dfinity/auth-client": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

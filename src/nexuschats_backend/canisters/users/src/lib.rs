@@ -64,7 +64,7 @@ fn add_user_profile(_user_profile: UserProfilePayload) -> UserProfile {
     let user_profile = UserProfile {
         id: _user_profile.id,
         principal_id: _user_profile.principal_id,
-        profile_body: _user_profile.profile_body,
+        profile_body: None,
         created_at: time().to_string(),
         updated_at: None,
     };

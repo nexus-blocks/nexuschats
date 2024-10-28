@@ -12,8 +12,6 @@ import React, {
   } from "@dfinity/auth-client";
   // import { canisterId as iiCanId } from "../../../declarations/internet_identity";
   import { Actor, ActorSubclass, HttpAgent, Identity } from "@dfinity/agent";
-//   import { canisterId, idlFactory } from "../../../declarations/users_backend";
-// import { _SERVICE } from "../../../declarations/users_backend/users_backend.did";
   
   const network = process.env.DFX_NETWORK || "local";
   const localhost = "http://localhost:4943";
@@ -97,14 +95,14 @@ import React, {
         agent.fetchRootKey();
       }
   
-      // const _backendActor: ActorSubclass<_SERVICE> = Actor.createActor(
-      //   idlFactory,
-      //   {
-      //     agent,
-      //     canisterId: canisterId,
-      //   }
-      // );
-      // setBackendActor(_backendActor);
+      const _backendActor: ActorSubclass<_SERVICE> = Actor.createActor(
+        idlFactory,
+        {
+          agent,
+          canisterId: canisterId,
+        }
+      );
+      setBackendActor(_backendActor);
     }
   
     
@@ -118,10 +116,10 @@ import React, {
   
     return {
       isAuthenticated,
-      // backendActor,
+      backendActor,
       login,
       logout,
-      // identity,
+      identity,
     };
   };
   
