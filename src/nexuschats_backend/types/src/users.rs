@@ -8,7 +8,7 @@ pub enum Error {
 pub type UserId = String;
 
 #[derive(candid::CandidType, Clone, Serialize, Deserialize, Default)]
-pub struct Profile {
+pub struct UserProfile {
     pub principal_id: String,
     pub id: String,
     pub profile_body: Option<ProfileBody>,
