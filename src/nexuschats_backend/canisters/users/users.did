@@ -1,0 +1,28 @@
+type Error = variant { NotFound : record { msg : text } };
+type ProfileBody = record {
+  username : text;
+  canister_id : opt text;
+  email : text;
+  first_name : text;
+  last_name : text;
+};
+type Result = variant { Ok : UserProfile; Err : Error };
+type UserProfile = record {
+  id : text;
+  updated_at : opt text;
+  created_at : text;
+  principal_id : text;
+  profile_body : opt ProfileBody;
+};
+type UserProfilePayload = record {
+  id : text;
+  principal_id : text;
+  profile_body : opt ProfileBody;
+};
+service : {
+  add_user_profile : (UserProfilePayload) -> (UserProfile);
+  delete_user_profile : (text) -> (bool);
+  get_all_users : () -> (vec UserProfile) query;
+  get_user_profile : (text) -> (Result) query;
+  update_user_profile : (UserProfile) -> (UserProfile);
+}

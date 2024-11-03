@@ -1,22 +1,21 @@
-use std::{borrow::Cow, cell::RefCell};;
+use std::borrow::Cow;
 use candid::{Decode, Encode};
+use ic_cdk::api::time;
 use ic_cdk::update;
 use crate::USERS;
 
-use types::{Error, UserProfile, UserProfilePayload};
+use crate::service::user_types::{UserProfile, UserProfilePayload};
 use ic_stable_structures::Storable;
 use ic_stable_structures::storable::Bound;
 
-struct StorableUserProfile(UserProfile);
 
-
-impl Storable for StorableUserProfile {
+impl Storable for UserProfile {
     fn to_bytes(&self) -> std::borrow::Cow<[u8]> {
-        Cow::Owned(Encode!(&self.0).unwrap())
+        Cow::Owned(Encode!(self).unwrap())
     }
 
     fn from_bytes(bytes: std::borrow::Cow<[u8]>) -> Self {
-        StorableUserProfile(Decode!(bytes.as_ref(), UserProfile).unwrap())
+        Decode!(bytes.as_ref(), Self).unwrap()
     }
 
     const BOUND: Bound = Bound::Unbounded;

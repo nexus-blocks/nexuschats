@@ -15,4 +15,3 @@ ic-cdk = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 ic-stable-structures = { workspace = true }
-types = { path = "../../types" }
