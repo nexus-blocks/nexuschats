@@ -26,7 +26,7 @@ impl Storable for UserProfile {
 fn update_user_profile(user_profile: UserProfile) -> UserProfile {
     USERS.with(|s| {
         s.borrow_mut()
-            .insert(user_profile.id.clone(), user_profile.clone())
+            .insert(user_profile.principal_id.clone(), user_profile.clone())
     });
     user_profile
 }
@@ -40,15 +40,15 @@ fn delete_user_profile(id: String) -> bool {
 #[update]
 fn add_user_profile(_user_profile: UserProfilePayload) -> UserProfile {
     let user_profile = UserProfile {
-        id: _user_profile.id,
-        principal_id: _user_profile.principal_id,
-        profile_body: None,
+        principal_id: ic_cdk::caller().to_string(),
+        username: _user_profile.username,
+        email: None,
         created_at: time().to_string(),
         updated_at: None,
     };
     USERS.with(|s| {
         s.borrow_mut()
-            .insert(user_profile.id.clone(), user_profile.clone())
+            .insert(user_profile.principal_id.clone(), user_profile.clone())
     });
     user_profile
 }

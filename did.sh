@@ -12,7 +12,7 @@ function generate_did() {
   candid-extractor "target/wasm32-unknown-unknown/release/$canister.wasm" > "$canister_root/$canister.did"
 }
 
-CANISTERS=chat,projects_manager,group,users,storage,project
+CANISTERS=chat,projects,group,users,storage
 
 for canister in $(echo $CANISTERS | sed "s/,/ /g")
 do

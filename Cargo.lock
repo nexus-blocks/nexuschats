@@ -330,19 +330,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "project"
-version = "0.1.0"
-dependencies = [
- "candid",
- "ic-cdk",
- "ic-stable-structures",
- "serde",
- "serde_json",
- "types",
-]
-
-[[package]]
-name = "projects_manager"
+name = "projects"
 version = "0.1.0"
 dependencies = [
  "candid",

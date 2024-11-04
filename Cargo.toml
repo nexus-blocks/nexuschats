@@ -2,11 +2,9 @@
 members = [
     "src/nexuschats_backend/canisters/chat",
     "src/nexuschats_backend/canisters/group",
-    "src/nexuschats_backend/canisters/project",
+    "src/nexuschats_backend/canisters/projects",
     "src/nexuschats_backend/canisters/users",
-    "src/nexuschats_backend/canisters/projects_manager",
     "src/nexuschats_backend/canisters/storage",
-    "src/nexuschats_backend/types",
 ]
 
 resolver = "2"

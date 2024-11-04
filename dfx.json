@@ -10,9 +10,9 @@
       "package": "project",
       "type": "rust"
     },
-    "users": {
-      "candid": "src/nexuschats_backend/canisters/users/users.did",
-      "package": "users",
+    "manager": {
+      "candid": "src/nexuschats_backend/canisters/manager/manager.did",
+      "package": "manager",
       "type": "rust"
     },
     "projects_manager": {

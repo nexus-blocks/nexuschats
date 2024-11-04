@@ -1,24 +1,13 @@
 type Error = variant { NotFound : record { msg : text } };
-type ProfileBody = record {
-  username : text;
-  canister_id : opt text;
-  email : text;
-  first_name : text;
-  last_name : text;
-};
 type Result = variant { Ok : UserProfile; Err : Error };
 type UserProfile = record {
-  id : text;
   updated_at : opt text;
+  username : text;
   created_at : text;
+  email : opt text;
   principal_id : text;
-  profile_body : opt ProfileBody;
 };
-type UserProfilePayload = record {
-  id : text;
-  principal_id : text;
-  profile_body : opt ProfileBody;
-};
+type UserProfilePayload = record { username : text };
 service : {
   add_user_profile : (UserProfilePayload) -> (UserProfile);
   delete_user_profile : (text) -> (bool);
