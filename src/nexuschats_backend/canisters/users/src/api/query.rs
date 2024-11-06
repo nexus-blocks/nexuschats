@@ -1,7 +1,7 @@
 use ic_cdk::query;
 use crate::USERS;
 
-use crate::service::user_types::{UserProfile, Error};
+use crate::common::types::{UserProfile, Error};
 
 fn _get_user_profile(id: &String) -> Option<UserProfile> {
     USERS.with(|s| s.borrow().get(id))
