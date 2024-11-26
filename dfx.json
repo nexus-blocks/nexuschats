@@ -5,19 +5,14 @@
       "package": "chat",
       "type": "rust"
     },
-    "project": {
-      "candid": "src/nexuschats_backend/canisters/project/project.did",
+    "projects": {
+      "candid": "src/nexuschats_backend/canisters/projects/projects.did",
       "package": "project",
       "type": "rust"
     },
     "manager": {
       "candid": "src/nexuschats_backend/canisters/manager/manager.did",
       "package": "manager",
-      "type": "rust"
-    },
-    "projects_manager": {
-      "candid": "src/nexuschats_backend/canisters/projects_manager/projects_manager.did",
-      "package": "projects_manager",
       "type": "rust"
     },
     "group": {

@@ -1,14 +1,14 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     "./src/**/*.{html,js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
       fontFamily: {
-          'mont': ['Montserrat', 'sans-serif'],
-          'poppins': ['Poppins', 'sans-serif'],
-        },
+        'mont': ['Montserrat', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif'],
+      },
     },
     screens: {
       ts: "360px",
@@ -21,4 +21,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
