@@ -6,7 +6,6 @@ use crate::PROJECTS;
 
 use ic_cdk::api::management_canister::main::{CanisterInstallMode, CreateCanisterArgument, InstallCodeArgument};
 use ic_cdk::api::{call, id};
-use candid::{encode_args, Principal};
 
 use crate::common::types::{Project, ProjectPayload};
 use ic_stable_structures::Storable;
@@ -63,14 +62,14 @@ fn update_project(project : ProjectPayload) -> Project {
     project
 }
 
-#[ic_cdk::update]
-async fn create_new_canister() -> Result<Principal, String> {
-    let create_args = CreateCanisterArgument {
-        settings: None,
-    };
+// #[ic_cdk::update]
+// async fn create_new_canister() -> Result<Principal, String> {
+//     let create_args = CreateCanisterArgument {
+//         settings: None,
+//     };
 
-    match call(Principal::management_canister(), "create_canister", (create_args,)).await {
-        Ok((canister_id,)) => Ok(canister_id),
-        Err((_, err)) => Err(format!("Failed to create canister: {}", err)),
-    }
-}
+//     match call(Principal::management_canister(), "create_canister", (create_args,)).await {
+//         Ok((canister_id,)) => Ok(canister_id),
+//         Err((_, err)) => Err(format!("Failed to create canister: {}", err)),
+//     }
+// }

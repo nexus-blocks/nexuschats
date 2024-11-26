@@ -1,1 +1,25 @@
-service : { greet : (text) -> (text) query }
+type Project = record {
+  id : text;
+  updated_at : opt text;
+  group_canister_id : opt text;
+  name : text;
+  description : text;
+  created_at : text;
+  user_id : text;
+  chat_canister_id : opt text;
+};
+type ProjectPayload = record {
+  id : text;
+  name : text;
+  description : text;
+  chat_app : bool;
+  group_app : bool;
+};
+type Result = variant { Ok : Project; Err : text };
+service : {
+  create_project : (ProjectPayload) -> (Project);
+  get_all_projects : () -> (vec Project) query;
+  get_my_projects : () -> (vec Project) query;
+  get_project : (text) -> (Result) query;
+  update_project : (ProjectPayload) -> (Project);
+}

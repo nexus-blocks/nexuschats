@@ -4,6 +4,7 @@ members = [
     "src/nexuschats_backend/canisters/group",
     "src/nexuschats_backend/canisters/projects",
     "src/nexuschats_backend/canisters/users",
+    "src/nexuschats_backend/canisters/manager",
     "src/nexuschats_backend/canisters/storage",
 ]
 

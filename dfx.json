@@ -7,7 +7,7 @@
     },
     "projects": {
       "candid": "src/nexuschats_backend/canisters/projects/projects.did",
-      "package": "project",
+      "package": "projects",
       "type": "rust"
     },
     "manager": {

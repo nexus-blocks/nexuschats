@@ -95,14 +95,14 @@ import React, {
         agent.fetchRootKey();
       }
   
-      const _backendActor: ActorSubclass<_SERVICE> = Actor.createActor(
-        idlFactory,
-        {
-          agent,
-          canisterId: canisterId,
-        }
-      );
-      setBackendActor(_backendActor);
+      // const _backendActor: ActorSubclass<_SERVICE> = Actor.createActor(
+      //   idlFactory,
+      //   {
+      //     agent,
+      //     canisterId: canisterId,
+      //   }
+      // );
+      // setBackendActor(_backendActor);
     }
   
     
@@ -116,10 +116,10 @@ import React, {
   
     return {
       isAuthenticated,
-      backendActor,
+      // backendActor,
       login,
       logout,
-      identity,
+      // identity,
     };
   };
   

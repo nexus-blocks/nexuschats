@@ -2,12 +2,13 @@ extern crate serde;
 use ic_stable_structures::memory_manager::{MemoryId, MemoryManager, VirtualMemory};
 use ic_stable_structures::{DefaultMemoryImpl, StableBTreeMap};
 use std::cell::RefCell;
+use candid::Principal;
 
 
 pub mod api;
 pub mod common;
 
-pub use common::types::Project;
+pub use common::types::{Project, ProjectPayload};
 
 type Memory = VirtualMemory<DefaultMemoryImpl>;
 
