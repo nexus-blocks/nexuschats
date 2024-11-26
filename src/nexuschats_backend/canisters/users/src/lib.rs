@@ -3,8 +3,9 @@ use ic_stable_structures::memory_manager::{MemoryId, MemoryManager, VirtualMemor
 use ic_stable_structures::{DefaultMemoryImpl, StableBTreeMap};
 use std::cell::RefCell;
 
-pub mod service;
-pub use service::user_types::{UserProfile, UserProfilePayload, Error};
+pub mod common;
+pub mod api;
+pub use common::types::{UserProfile, UserProfilePayload, Error};
 
 
 type Memory = VirtualMemory<DefaultMemoryImpl>;

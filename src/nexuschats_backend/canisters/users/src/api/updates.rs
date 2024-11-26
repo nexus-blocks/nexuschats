@@ -4,7 +4,7 @@ use ic_cdk::api::time;
 use ic_cdk::update;
 use crate::USERS;
 
-use crate::service::user_types::{UserProfile, UserProfilePayload};
+use crate::common::types::{UserProfile, UserProfilePayload};
 use ic_stable_structures::Storable;
 use ic_stable_structures::storable::Bound;
 
