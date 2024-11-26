@@ -19,4 +19,11 @@ pub struct ProjectPayload {
     pub name: String,
     pub id: String,
     pub description: String,
+    pub chat_app: bool,
+    pub group_app: bool,
+}
+
+#[derive(CandidType, Clone, Debug, Serialize, Deserialize)]
+pub struct Error {
+    pub msg: String,
 }
